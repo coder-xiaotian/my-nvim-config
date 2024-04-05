@@ -13,3 +13,4 @@ opt.foldmethod = "indent"
 opt.foldlevel = 99
 opt.foldenable = true
 opt.foldlevelstart = 99
+opt.sign_column = "yes"
