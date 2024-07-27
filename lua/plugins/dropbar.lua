@@ -14,6 +14,5 @@ return {
         desc = "open dropbar",
       },
     },
-    opts = {},
   },
 }

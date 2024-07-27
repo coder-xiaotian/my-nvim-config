@@ -12,5 +12,6 @@ opt.indentexpr = ""
 opt.foldmethod = "indent"
 opt.foldlevel = 99
 opt.foldenable = true
+opt.mousemoveevent = true
 opt.foldlevelstart = 99
 opt.signcolumn = "yes"
