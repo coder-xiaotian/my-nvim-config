@@ -16,10 +16,10 @@ vim.keymap.del("n", "<C-s>")
 map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- undo redo 重新映射
-map({ "i", "x", "n", "s" }, "<D-z>", function()
+map({ "i", "n", "s" }, "<D-z>", function()
   vim.cmd([[undo]])
 end, { desc = "Undo" })
-map({ "i", "x", "n", "s" }, "<D-S-z>", function()
+map({ "i", "n", "s" }, "<D-S-z>", function()
   vim.cmd([[redo]])
 end, { desc = "Rndo" })
 -- map({ "i" }, "<D-z>", "<esc>uA", { desc = "Insert mode undo" })
@@ -27,8 +27,6 @@ end, { desc = "Rndo" })
 map({ "i", "x", "n", "s" }, "<D-d>", "<esc>yyp", { desc = "Copy line to blow" })
 map({ "i", "x", "n", "s" }, "<D-x>", "<esc>dd", { desc = "Cut line" })
 map({ "i", "x", "n", "s" }, "<D-c>", "<esc>yy", { desc = "Copy line" })
-map({ "i", "x", "n", "s" }, "<D-S-f>", "<esc><cmd>Telescope live_grep<cr>", { desc = "Find text globally" })
-map({ "i", "x", "n", "s" }, "<D-S-o>", "<esc><cmd>Telescope find_files<cr>", { desc = "Find file globally" })
 map({ "i", "x", "n", "s" }, "<D-a>", "<esc>gg<S-v>G", { desc = "Select all" })
 
 -- Move Lines
@@ -39,4 +37,4 @@ map("i", "<D-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<D-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<D-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
-map({ "i", "x", "n", "x" }, "<D-f>", "<esc>/", { desc = "Find in file" })
+map({ "i", "n" }, "<D-f>", "<esc>/", { desc = "Find in file" })
