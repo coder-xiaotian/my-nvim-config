@@ -5,36 +5,34 @@
 local util = require("lazyvim.util")
 local map = util.safe_keymap_set
 
-vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
-vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
-vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
-vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
+vim.keymap.set({ "n", "v" }, "<C-v>", '"+P') -- Paste normal/visual mode
+vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
+vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
 
 vim.keymap.del("i", "<C-s>")
 vim.keymap.del("x", "<C-s>")
 vim.keymap.del("n", "<C-s>")
-map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+-- map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- undo redo 重新映射
-map({ "i", "n", "s" }, "<D-z>", function()
+map({ "i", "n", "s" }, "<C-z>", function()
   vim.cmd([[undo]])
 end, { desc = "Undo" })
-map({ "i", "n", "s" }, "<D-S-z>", function()
+map({ "i", "n", "s" }, "<C-S-z>", function()
   vim.cmd([[redo]])
 end, { desc = "Rndo" })
--- map({ "i" }, "<D-z>", "<esc>uA", { desc = "Insert mode undo" })
 
-map({ "i", "x", "n", "s" }, "<D-d>", "<esc>yyp", { desc = "Copy line to blow" })
-map({ "i", "x", "n", "s" }, "<D-x>", "<esc>dd", { desc = "Cut line" })
-map({ "i", "x", "n", "s" }, "<D-c>", "<esc>yy", { desc = "Copy line" })
-map({ "i", "x", "n", "s" }, "<D-a>", "<esc>gg<S-v>G", { desc = "Select all" })
+map({ "i", "x", "n", "s" }, "<C-d>", "<esc>yyp", { desc = "Copy line to blow" })
+map({ "i", "x", "n", "s" }, "<C-x>", "<esc>dd", { desc = "Cut line" })
+map({ "i", "x", "n", "s" }, "<C-c>", "<esc>yy", { desc = "Copy line" })
+map({ "i", "x", "n", "s" }, "<C-a>", "<esc>gg<S-v>G", { desc = "Select all" })
 
 -- Move Lines
-map("n", "<D-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<D-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<D-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<D-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<D-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<D-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
-map({ "i", "n" }, "<D-f>", "<esc>/", { desc = "Find in file" })
+map({ "i", "n" }, "<C-f>", "<esc>/", { desc = "Find in file" })
