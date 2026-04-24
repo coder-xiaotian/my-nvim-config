@@ -18,13 +18,7 @@ return {
       vim.api.nvim_create_autocmd("VimEnter", {
         nested = true,
         callback = function()
-          require("persistence").load({ last = true })
-          -- 删除 session 恢复后残留的空 [No Name] buffer
-          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if vim.api.nvim_buf_get_name(buf) == "" and vim.bo[buf].buftype == "" and not vim.bo[buf].modified then
-              pcall(vim.api.nvim_buf_delete, buf, {})
-            end
-          end
+          require("persistence").load()
         end,
       })
     end,

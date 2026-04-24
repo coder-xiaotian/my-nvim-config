@@ -35,4 +35,4 @@ map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
-map({ "i", "n" }, "<C-f>", "<esc>/", { desc = "Find in file" })
+map({ "n" }, "<C-S-U>", "<C-d>zz", { desc = "Scroll down half page" })
