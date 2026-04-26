@@ -1,6 +1,19 @@
 return {
   "coder/claudecode.nvim",
-  opts = {},
+  opts = {
+    -- Diff Integration
+    diff_opts = {
+      layout = "vertical", -- "vertical" or "horizontal"
+      open_in_new_tab = true,
+      keep_terminal_focus = true, -- If true, moves focus back to terminal after diff opens
+      hide_terminal_in_new_tab = false,
+      -- on_new_file_reject = "keep_empty", -- "keep_empty" or "close_window"
+
+      -- Legacy aliases (still supported):
+      -- vertical_split = true,
+      -- open_in_current_tab = true,
+    },
+  },
   keys = {
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
