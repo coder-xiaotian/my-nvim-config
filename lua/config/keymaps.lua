@@ -23,7 +23,12 @@ map({ "i", "n", "s" }, "<C-S-z>", function()
 end, { desc = "Rndo" })
 
 map({ "i", "x", "n", "s" }, "<C-d>", "<esc>yyp", { desc = "Copy line to blow" })
-map({ "i", "x", "n", "s" }, "<C-x>", "<esc>dd", { desc = "Cut line" })
+map({ "i", "x", "n", "s" }, "<C-x>", '<esc>yy"_dd', { desc = "Cut line" })
+
+-- dd 删除行不进寄存器/剪贴板（要剪切请用 <C-x>）
+map({ "n", "v" }, "d", '"_d', { desc = "Delete without yank" })
+map({ "n", "v" }, "D", '"_D', { desc = "Delete to EOL without yank" })
+map("n", "x", '"_x', { desc = "Delete char without yank" })
 map({ "i", "x", "n", "s" }, "<C-c>", "<esc>yy", { desc = "Copy line" })
 map({ "i", "x", "n", "s" }, "<C-a>", "<esc>gg<S-v>G", { desc = "Select all" })
 
