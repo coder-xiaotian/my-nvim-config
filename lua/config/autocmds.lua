@@ -7,7 +7,7 @@
 -- 策略：直接调用 conform 同步格式化，再写盘；不依赖 BufWritePre 链路
 local auto_save_group = vim.api.nvim_create_augroup("AutoSave", { clear = true })
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "BufLeave", "FocusLost" }, {
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "BufLeave", "FocusLost" }, {
   group = auto_save_group,
   pattern = "*",
   callback = function(ev)
