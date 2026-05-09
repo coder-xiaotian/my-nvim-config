@@ -1,7 +1,7 @@
 return {
   -- 自动恢复会话时需要禁用 dashboard，否则 dashboard 会覆盖恢复的 buffer
   {
-    "snacks.nvim",
+    "folke/snacks.nvim",
     opts = function(_, opts)
       -- 仅当无参数启动时禁用 dashboard
       if vim.fn.argc(-1) == 0 then
