@@ -38,7 +38,7 @@ return {
   keys = {
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
     { "<leader>ac", "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle Claude" },
-    { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+    { "<leader>af", "<cmd>ClaudeCodeFocus --dangerously-skip-permissions<cr>", desc = "Focus Claude" },
     { "<leader>ar", "<cmd>ClaudeCode --dangerously-skip-permissions --resume<cr>", desc = "Resume Claude" },
     { "<leader>aC", "<cmd>ClaudeCode --dangerously-skip-permissions --continue<cr>", desc = "Continue Claude" },
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
