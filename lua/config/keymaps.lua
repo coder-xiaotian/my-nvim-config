@@ -22,7 +22,7 @@ map({ "i", "n", "s" }, "<C-S-z>", function()
   vim.cmd([[redo]])
 end, { desc = "Rndo" })
 
-map({ "i", "x", "n", "s" }, "<C-d>", "<esc>yyp", { desc = "Copy line to blow" })
+map({ "i", "x", "n", "s" }, "<C-d>", '<esc>"zyy"zp', { desc = "Duplicate line without touching clipboard" })
 map({ "i", "x", "n", "s" }, "<C-x>", '<esc>yy"_dd', { desc = "Cut line" })
 
 -- dd 删除行不进寄存器/剪贴板（要剪切请用 <C-x>）
