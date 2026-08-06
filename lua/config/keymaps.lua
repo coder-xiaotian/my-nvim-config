@@ -41,3 +41,16 @@ map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 map({ "n" }, "<C-S-U>", "<C-d>zz", { desc = "Scroll down half page" })
+
+-- visual 模式下复制 cc 文件引用（@相对git-root路径:行区间），粘贴进 cc 直接定位
+map("v", "<leader>cy", function()
+  local s = vim.fn.getpos("'<")
+  local e = vim.fn.getpos("'>")
+  local file = vim.fn.expand("%:p")
+  local root = vim.fs.root(0, ".git") or vim.fs.dirname(file)
+  local rel = file:sub(#root + 2) -- root 无尾斜杠，跳过前导 /
+  local range = s[2] == e[2] and tostring(s[2]) or (s[2] .. "-" .. e[2])
+  local text = ("@%s:%s"):format(rel, range)
+  vim.fn.setreg("+", text)
+  vim.notify(("Copied %s"):format(text))
+end, { desc = "Copy file location for Claude Code" })
