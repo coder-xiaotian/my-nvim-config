@@ -44,12 +44,14 @@ map({ "n" }, "<C-S-U>", "<C-d>zz", { desc = "Scroll down half page" })
 
 -- visual 模式下复制 cc 文件引用（@相对git-root路径:行区间），粘贴进 cc 直接定位
 map("v", "<leader>cy", function()
-  local s = vim.fn.getpos("'<")
-  local e = vim.fn.getpos("'>")
+  -- 不能用 '< '> 标记：visual 模式期间它们是上一次退出时的选区（或 0），会拿到过期/空行号
+  local s = vim.fn.getpos("v") -- 当前选区起点（进入 visual 时记录）
+  local e = vim.fn.getpos(".") -- 当前光标 = 选区终点
   local file = vim.fn.expand("%:p")
   local root = vim.fs.root(0, ".git") or vim.fs.dirname(file)
   local rel = file:sub(#root + 2) -- root 无尾斜杠，跳过前导 /
-  local range = s[2] == e[2] and tostring(s[2]) or (s[2] .. "-" .. e[2])
+  local a, b = math.min(s[2], e[2]), math.max(s[2], e[2]) -- 反向选择时归一化
+  local range = a == b and tostring(a) or (a .. "-" .. b)
   local text = ("@%s:%s"):format(rel, range)
   vim.fn.setreg("+", text)
   vim.notify(("Copied %s"):format(text))
